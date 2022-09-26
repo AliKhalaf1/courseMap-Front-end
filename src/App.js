@@ -1,9 +1,10 @@
-import { Routes, Route } from "react-router-dom";
-import Header from "./Modules/Header/Header";
-import Home from "./Modules/Home/Home";
-import Login from "./Modules/Login/Login";
-import Register from "./Modules/Register/Register";
-import "./App.css";
+import { Routes, Route } from 'react-router-dom';
+import Header from './Modules/Header/Header';
+import Home from './Modules/Home/Home';
+import Login from './Modules/Login/Login';
+import Register from './Modules/Register/Register';
+import './App.css';
+import Swap from './Modules/Swap/Swap';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/swap" element={<Swap />} />
       </Routes>
     </>
   );
