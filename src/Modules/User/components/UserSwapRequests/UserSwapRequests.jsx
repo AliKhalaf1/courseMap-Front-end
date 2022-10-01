@@ -33,7 +33,7 @@ const UserSwapRequests = () => {
               <th>Subject</th>
               <th>Creation Date</th>
               <th>Offered Time Slot</th>
-              <th>Wanted Time Slots</th>
+              <th>Wanted Time Slot(s)</th>
               <th>Status</th>
             </tr>
           </thead>

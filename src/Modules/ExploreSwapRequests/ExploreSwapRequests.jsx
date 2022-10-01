@@ -61,9 +61,10 @@ const ExploreSwapRequests = () => {
                 <tr>
                   <th>#</th>
                   <th>User</th>
+                  <th>Email</th>
                   <th>Created at</th>
                   <th>Offered Time Slot</th>
-                  <th>Wanted Time Slots</th>
+                  <th>Wanted Time Slot(s)</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -71,7 +72,8 @@ const ExploreSwapRequests = () => {
                 {listOfRequests.map((value, key) => (
                     <tr key={key}>
                       <td>{key + 1}</td>
-                      <td>{value.user}</td>
+                      <td>{value.user.name}</td>
+                      <td>{value.user.email}</td>
                       <td>{globalFunctions.dateToString(value.createdAt)}</td>
                       <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
                       <td>
