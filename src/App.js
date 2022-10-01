@@ -4,7 +4,7 @@ import Home from './Modules/Home/Home';
 import Login from './Modules/Login/Login';
 import Register from './Modules/Register/Register';
 import Swap from './Modules/Swap/Swap';
-import SearchSwapRequests from './Modules/SearchSwapRequests';
+import User from './Modules/User';
 import './App.css';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/swap" element={<Swap />} />
-        <Route path="/view" element={<SearchSwapRequests />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </>
   );

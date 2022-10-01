@@ -18,6 +18,9 @@ a {
 body {
   background-color: var(--color-dark-hover);
 }
+.loader {
+  background-color: red;
+}
 /* @media (max-width: 400px) {
   
   h6{

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -34,7 +34,7 @@ const Swap = () => {
   //data for picking wanted time
   //const [wantedTimeWordEntered, setWantedTimeWordEntered] = useState('');
   const [wantedTimePicked, setWantedTimePicked] = useState([]);
-  
+
   const handlePickingSubject = (value) => {
     console.log(value);
     setFilteredData([]);
@@ -67,23 +67,19 @@ const Swap = () => {
       : setWantedTimePicked([value]);
   };
 
-  const HandleDeleteWantedRequestsFromTable = (valueId) =>{
-    console.log(valueId)
-    setWantedTimePicked(
-      wantedTimePicked.filter((time)=> time.id !== valueId)
-    )
-  }
+  const HandleDeleteWantedRequestsFromTable = (valueId) => {
+    setWantedTimePicked(wantedTimePicked.filter((time) => time.id !== valueId));
+  };
 
   const HandleSubmitRequest = () => {
-    if (!offeredTimePickedId || wantedTimePicked.length<=0 || !subjectPicked) {
+    if (!offeredTimePickedId || wantedTimePicked.length <= 0 || !subjectPicked) {
       setSuccessful(false);
       setMessage('You didnt finish your request :(');
     } else {
-      let wantedTimePickedIds=[]
-      wantedTimePicked.forEach((wantedTime)=>{
-        wantedTimePickedIds.push(wantedTime.id)
-        
-      })
+      let wantedTimePickedIds = [];
+      wantedTimePicked.forEach((wantedTime) => {
+        wantedTimePickedIds.push(wantedTime.id);
+      });
       // wantedTimePicked.forEach((wantedTime) => {
       //   wantedTimePickedArrOfCodes
       //     ? setWantedTimePickedArrOfCodes([...wantedTimePickedArrOfCodes, wantedTime.id])
@@ -92,12 +88,12 @@ const Swap = () => {
       console.log(wantedTimePickedIds);
       console.log(offeredTimePickedId);
       console.log(wantedTimePicked.length);
-      swapServices.postSwapRequest(wantedTimePickedIds,offeredTimePickedId).then(
+      swapServices.postSwapRequest(wantedTimePickedIds, offeredTimePickedId).then(
         (response) => {
           setLoading(false);
           setSuccessful(true);
           setMessage('Successful');
-          console.log(response)
+          console.log(response);
         },
         (error) => {
           setLoading(false);
@@ -109,7 +105,7 @@ const Swap = () => {
           console.log(resMessage);
           setSuccessful(false);
         }
-      )
+      );
     }
   };
   if (!loggedIn) {
@@ -211,7 +207,15 @@ const Swap = () => {
                       <td>{value.day}</td>
                       <td>{value.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
                       <td>{value.startTime + ':' + value.endTime}</td>
-                      <td><Button variant="outline-danger" size="sm" onClick={() => HandleDeleteWantedRequestsFromTable(value.id)}>Delete</Button></td>
+                      <td>
+                        <Button
+                          variant="outline-danger"
+                          size="sm"
+                          onClick={() => HandleDeleteWantedRequestsFromTable(value.id)}
+                        >
+                          Delete
+                        </Button>
+                      </td>
                     </tr>
                   ))}
                 </>
