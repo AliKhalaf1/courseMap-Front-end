@@ -103,7 +103,7 @@ const SwapStatus = () => {
                             <td>
                               <Button
                                 variant="outline-success"
-                                onClick={() => HandleAcceptSwapRequest(value.id,match.id)}
+                                onClick={() => HandleAcceptSwapRequest(value.id, match.id)}
                               >
                                 Accept
                               </Button>
@@ -137,8 +137,10 @@ const SwapStatus = () => {
             ))
           ) : (
             <>
-            <h4>You have not made any requests... :/</h4>
-            <h5>Create a new one from <a href='/swap'>here</a></h5>
+              <h4>You have not made any requests... :/</h4>
+              <h5>
+                Create a new one from <a href="/swap">here</a>
+              </h5>
             </>
           )}
         </div>

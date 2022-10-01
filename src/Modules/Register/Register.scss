@@ -25,7 +25,7 @@
   input {
     background-color: #f8f9fa;
     padding: 15px 15px;
-    margin-bottom: 1.3rem;
+    margin-bottom: 10px;
   }
   button {
     background-color: var(--color-info-disable);
@@ -47,5 +47,9 @@
   }
   a:hover {
     color: white;
+  }
+  .alerts{
+    padding: 0px;
+    margin: 0px;
   }
 }

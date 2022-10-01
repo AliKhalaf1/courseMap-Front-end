@@ -6,9 +6,13 @@ import { Navigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import authHeader from '../../Global/auth-header';
-
+import { Button } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
 const Register = () => {
   const formSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    number: Yup.string().required('Number is required'),
+    email: Yup.string().required('Email is required'),
     password: Yup.string()
       .required('Password is required')
       .min(8, 'Password length should be at least 8 characters'),
@@ -60,20 +64,18 @@ const Register = () => {
       <div className="card">
         <h2 className="">Register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            {...register('name', { required: true })}
-          />
-          {errors.name?.type === 'required' && 'Name is required'}
+          <p className="alerts">{errors.name?.message}</p>
+          <input type="text" className="form-control" placeholder="Name" {...register('name')} />
+
+          <p className="alerts">{errors.email?.message}</p>
           <input
             type="email"
             className="form-control"
             placeholder="Email"
             {...register('email', { required: true })}
           />
-          {errors.email?.type === 'required' && 'Email is required'}
+
+          <p className="alerts">{errors.number?.message}</p>
           <input
             type="tel"
             className="form-control"
@@ -81,25 +83,32 @@ const Register = () => {
             pattern="[0]{1}[1]{1}[0-9]{9}"
             {...register('number')}
           />
+
+          <p className="alerts">{errors.password?.message}</p>
           <input
             type="password"
             className="form-control"
             placeholder="Password"
             {...register('password')}
           />
-          <p className="alerts">{errors.password?.message}</p>
+
+          <p className="alerts">{errors.cpassword?.message}</p>
           <input
             type="password"
             className="form-control"
             placeholder="Confirm Password"
             {...register('cpassword')}
           />
-          <p className="alerts">{errors.cpassword?.message}</p>
           <div>
             <a href="/login">Already have an account? Login</a>
           </div>
-          <button>Create Account</button>
+          <Button type="submit" disabled={loading}>
+            {loading ? <Spinner as="span" animation="border" size="sm" /> : <></>}
+            Create Account
+          </Button>
+          {/* <button>Create Account</button> */}
         </form>
+
         {message && (
           <div className="form-group">
             <div className={successful ? 'alert alert-success' : 'alert alert-danger'} role="alert">

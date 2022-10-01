@@ -19,16 +19,18 @@ const Home = () => {
             <Card.Body>
               <FaExchangeAlt className="icon" />
               <h5>Swap Request.</h5>
-              <p>Get a day free, fill a gap or attend with your friends. Swap a course with someone.</p>
+              <p>
+                Get a day free, fill a gap or attend with your friends. Swap a course with someone.
+              </p>
             </Card.Body>
           </a>
         </Card>
 
-        <Card className='mystery'>
+        <Card className="mystery">
           <h1>?</h1>
         </Card>
 
-        <Card className='mystery'>
+        <Card className="mystery">
           <h1>?</h1>
         </Card>
       </CardGroup>

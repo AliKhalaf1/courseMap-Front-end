@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 import loginServices from './Services/login.services';
 import { Navigate } from 'react-router-dom';
 import authHeader from '../../Global/auth-header';
-
+import { Button } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
 const Login = () => {
   const loggedIn = Object.keys(authHeader()).length ? true : false;
   const [loading, setLoading] = useState(false);
@@ -53,7 +54,10 @@ const Login = () => {
           <div>
             <a href="/register">Create an account</a>
           </div>
-          <button>Login</button>
+          <Button type="submit" disabled={loading}>
+            {loading ? <Spinner as="span" animation="border" size="sm" /> : <></>}
+            Login
+          </Button>
         </form>
         {message && (
           <div className="form-group">
