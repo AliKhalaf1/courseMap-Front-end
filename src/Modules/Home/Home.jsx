@@ -12,7 +12,6 @@ const Home = () => {
       <div className="home-text">
         <h3>CUFE Credit Hour System</h3>
         <h1>Virtual Assistant</h1>
-        <h4>Customize your future course map the way you like</h4>
       </div>
       <CardGroup className="cards" md={1}>
         <Card className="card">
@@ -25,24 +24,12 @@ const Home = () => {
           </a>
         </Card>
 
-        <Card href="#course-map">
-          <a href="#course-map">
-            <Card.Body>
-              <RiMindMap className="icon" />
-              <h5>Make a course map.</h5>
-              <p>Create a full course map for the whole four years of your program.</p>
-            </Card.Body>
-          </a>
+        <Card className='mystery'>
+          <h1>?</h1>
         </Card>
 
-        <Card>
-          <a href="#course-map">
-            <Card.Body>
-              <FaRegListAlt className="icon" />
-              <h5>Discover courses.</h5>
-              <p>List all the courses you can take during your program study.</p>
-            </Card.Body>
-          </a>
+        <Card className='mystery'>
+          <h1>?</h1>
         </Card>
       </CardGroup>
     </section>

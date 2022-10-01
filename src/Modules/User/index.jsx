@@ -6,7 +6,7 @@ const User = () => {
   return (
     <Container>
       <UserSwapRequests />
-      <UserCourseMap />
+      {/* <UserCourseMap /> */}
     </Container>
   );
 };

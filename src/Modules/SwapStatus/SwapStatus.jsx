@@ -20,10 +20,10 @@ const SwapStatus = () => {
     });
   }, []);
 
-  const HandleAcceptSwapRequest = (reqId) => {
+  const HandleAcceptSwapRequest = (valueId, matchedId) => {
     setLoading(true);
     setMessage('');
-    swapStatusServices.acceptSwapRequest(reqId).then(
+    swapStatusServices.acceptSwapRequest(valueId, matchedId).then(
       (res) => {
         setLoading(false);
         setMessage('Successful');
@@ -41,10 +41,10 @@ const SwapStatus = () => {
       }
     );
   };
-  const HandleDeclineSwapRequest = (reqId) => {
+  const HandleDeclineSwapRequest = (valueId, matchedId) => {
     setLoading(true);
     setMessage('');
-    swapStatusServices.declineSwapRequest(reqId).then(
+    swapStatusServices.declineSwapRequest(valueId, matchedId).then(
       (res) => {
         setLoading(false);
         setMessage('Successful');
@@ -86,6 +86,7 @@ const SwapStatus = () => {
                       <thead>
                         <tr>
                           <th>#</th>
+                          <th>Name</th>
                           <th>Email</th>
                           <th>Matched Time</th>
                           <th>Actions</th>
@@ -95,13 +96,14 @@ const SwapStatus = () => {
                         {value.matches.map((match, matchKey) => (
                           <tr key={matchKey}>
                             <td>{matchKey + 1}</td>
-                            <td>{match.matchedUser}</td>
+                            <td>{match.matchedUser.name}</td>
+                            <td>{match.matchedUser.email}</td>
                             <td>d</td>
 
                             <td>
                               <Button
                                 variant="outline-success"
-                                onClick={() => HandleAcceptSwapRequest(match.id)}
+                                onClick={() => HandleAcceptSwapRequest(value.id,match.id)}
                               >
                                 Accept
                               </Button>

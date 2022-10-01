@@ -44,4 +44,15 @@
       }
     }
   }
+  .mystery{
+    align-items: center;
+    h1{
+      font-size: 130px;
+      position: absolute;
+      top: 45%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+  
 }
