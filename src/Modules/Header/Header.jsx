@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import loginServices from '../Login/Services/login.services';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import authHeader from '../../Global/auth-header';
 import './Header.scss';
 
