@@ -23,47 +23,47 @@ const UserSwapRequests = () => {
     });
   };
   const Requests = () => {
-    return (<>
-    <h2>Swap Requests</h2>
-      <Table striped bordered hover variant="dark" className="mt-3">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Subject</th>
-            <th>Creation Date</th>
-            <th>Offered Time Slot</th>
-            <th>Wanted Time Slots</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {console.log(requestsList)}
-          {requestsList.map((value, key) => (
-            <tr key={key}>
-              <td>{key + 1}</td>
-              <td>{value.course.code}</td>
-              <td>{functions.dateToString(value.createdAt)}</td>
-              <td>{functions.timeToString(value.offeredTimeslot)}</td>
-              <td>
-                {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
-                  <p key={wantedTimeslotsKey}>{functions.timeToString(time)}</p>
-                ))}
-              </td>
-
-              <td>{value.status}</td>
-              <td>
-                <Button
-                  variant="outline-danger"
-                  size="sm"
-                  onClick={() => HandleDeleteRequest(value.id)}
-                >
-                  Delete
-                </Button>
-              </td>
+    return (
+      <>
+        <h2>Swap Requests</h2>
+        <Table striped bordered hover variant="dark" className="mt-3">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Subject</th>
+              <th>Creation Date</th>
+              <th>Offered Time Slot</th>
+              <th>Wanted Time Slots</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {requestsList.map((value, key) => (
+              <tr key={key}>
+                <td>{key + 1}</td>
+                <td>{value.course.code}</td>
+                <td>{functions.dateToString(value.createdAt)}</td>
+                <td>{functions.timeToString(value.offeredTimeslot)}</td>
+                <td>
+                  {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
+                    <p key={wantedTimeslotsKey}>{functions.timeToString(time)}</p>
+                  ))}
+                </td>
+
+                <td>{value.status}</td>
+                <td>
+                  <Button
+                    variant="outline-danger"
+                    size="sm"
+                    onClick={() => HandleDeleteRequest(value.id)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </>
     );
   };

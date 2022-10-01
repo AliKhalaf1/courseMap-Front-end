@@ -24,14 +24,20 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              
               <Nav.Link href="/swap">Swap</Nav.Link>
+              {loggedIn ? (
+                <>
+                  <Nav.Link href="/swapstatus">My Swap Status</Nav.Link>
+                </>
+              ) : (
+                <></>
+              )}
             </Nav>
             <Nav>
               {loggedIn ? (
                 <>
-                <Nav.Link href="/user">Profile</Nav.Link>
-                <Nav.Link onClick={logOut}>Log Out</Nav.Link>
+                  <Nav.Link href="/user">Profile</Nav.Link>
+                  <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </>
               ) : (
                 <>

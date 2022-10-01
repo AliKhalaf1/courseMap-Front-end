@@ -4,7 +4,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import './Home.scss';
 import { BsTable } from 'react-icons/bs';
 import { RiMindMap } from 'react-icons/ri';
-import { FaRegListAlt } from 'react-icons/fa';
+import { FaRegListAlt, FaExchangeAlt } from 'react-icons/fa';
 
 const Home = () => {
   return (
@@ -16,11 +16,11 @@ const Home = () => {
       </div>
       <CardGroup className="cards" md={1}>
         <Card className="card">
-          <a href="#course-map">
+          <a href="/swap">
             <Card.Body>
-              <BsTable className="icon" />
-              <h6>Make a table.</h6>
-              <p>Prepare a table for your next semester.</p>
+              <FaExchangeAlt className="icon" />
+              <h6>Create a swap Request.</h6>
+              <p></p>
             </Card.Body>
           </a>
         </Card>

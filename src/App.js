@@ -5,6 +5,7 @@ import Login from './Modules/Login/Login';
 import Register from './Modules/Register/Register';
 import Swap from './Modules/Swap/Swap';
 import User from './Modules/User';
+import SwapStatus from './Modules/SwapStatus/SwapStatus';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/swap" element={<Swap />} />
         <Route path="/user" element={<User />} />
+        <Route path="/swapstatus" element={<SwapStatus />} />
       </Routes>
     </>
   );

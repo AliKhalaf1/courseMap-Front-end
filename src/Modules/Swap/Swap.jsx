@@ -36,7 +36,7 @@ const Swap = () => {
   const [wantedTimePicked, setWantedTimePicked] = useState([]);
 
   const handlePickingSubject = (value) => {
-    console.log(value);
+
     setFilteredData([]);
     setSubjectPicked(value);
     setSubjectWordEntered(value.name);
@@ -80,20 +80,12 @@ const Swap = () => {
       wantedTimePicked.forEach((wantedTime) => {
         wantedTimePickedIds.push(wantedTime.id);
       });
-      // wantedTimePicked.forEach((wantedTime) => {
-      //   wantedTimePickedArrOfCodes
-      //     ? setWantedTimePickedArrOfCodes([...wantedTimePickedArrOfCodes, wantedTime.id])
-      //     : setWantedTimePickedArrOfCodes([wantedTime.id]);
-      // });
-      console.log(wantedTimePickedIds);
-      console.log(offeredTimePickedId);
-      console.log(wantedTimePicked.length);
+
       swapServices.postSwapRequest(wantedTimePickedIds, offeredTimePickedId).then(
         (response) => {
           setLoading(false);
           setSuccessful(true);
           setMessage('Successful');
-          console.log(response);
         },
         (error) => {
           setLoading(false);
@@ -114,136 +106,129 @@ const Swap = () => {
   return (
     <Container>
       <Row>
-        <Col md={6}>
-          <div className="input_group">
-            <InputGroup size="sm">
-              <InputGroup.Text>Course</InputGroup.Text>
-              <Form.Control
-                value={subjectWordEntered}
-                onChange={handleQuery}
-                className="formControl"
-              />
-            </InputGroup>
-            {filteredData.length !== 0 && (
-              <div className="queryResult">
-                {filteredData.map((value, key) => (
-                  <div key={key} className="dataItem" onClick={() => handlePickingSubject(value)}>
-                    <p>{value.name} </p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </Col>
-        <Col md={6}>
-          <div className="dropdowns mt-4">
-            <InputGroup size="sm">
-              <DropdownButton variant="secondary" title="Time to change" className="control">
-                {availableTimes.map((value, key) => (
-                  <Dropdown.Item
-                    className="dropdownItem"
-                    key={key}
-                    onClick={() => handlePickingOfferedTime(value)}
-                  >
-                    Group: {value.group} {value.day} {value.type} {value.startTime}:{value.endTime}
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
-              <Table striped bordered hover variant="dark" className="mt-3">
-                <thead>
-                  <tr>
-                    <th>Group</th>
-                    <th>Day</th>
-                    <th>Type</th>
-                    <th>Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {offeredTimePicked && (
-                    <tr>
-                      <td>{offeredTimePicked.group}</td>
-                      <td>{offeredTimePicked.day}</td>
-                      <td>{offeredTimePicked.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
-                      <td>{offeredTimePicked.startTime + ':' + offeredTimePicked.endTime}</td>
-                    </tr>
-                  )}
-                </tbody>
-              </Table>
-            </InputGroup>
-          </div>
+        <div className="input_group">
+          <InputGroup size="sm">
+            <InputGroup.Text>Course</InputGroup.Text>
+            <Form.Control
+              value={subjectWordEntered}
+              onChange={handleQuery}
+              className="formControl"
+            />
+          </InputGroup>
+          {filteredData.length !== 0 && (
+            <div className="queryResult">
+              {filteredData.map((value, key) => (
+                <div key={key} className="dataItem" onClick={() => handlePickingSubject(value)}>
+                  <p>{value.name} </p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
-          <div className=" dropdowns mt-3">
-            <InputGroup size="sm">
-              <DropdownButton variant="secondary" title="Time(s) you want" className="control">
-                {availableTimes.map((value, key) => (
-                  <Dropdown.Item
-                    className="dropdownItem"
-                    key={key}
-                    onClick={() => handlePickingWantedTime(value)}
-                  >
-                    Group: {value.group} {value.day} {value.type} {value.startTime}:{value.endTime}
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
-              {/* /<Form.Control className="formControl" value={wantedTimeWordEntered} readOnly /> */}
-            </InputGroup>
-          </div>
-
-          <Table striped bordered hover variant="dark" className="mt-3">
-            <thead>
+        <div className="dropdowns mt-3">
+          <InputGroup size="sm">
+            <DropdownButton variant="secondary" title="Time to change" className="control">
+              {availableTimes.map((value, key) => (
+                <Dropdown.Item
+                  className="dropdownItem"
+                  key={key}
+                  onClick={() => handlePickingOfferedTime(value)}
+                >
+                  Group: {value.group} {value.day} {value.type} {value.startTime}:{value.endTime}
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>
+          </InputGroup>
+        </div>
+        <Table striped bordered hover variant="dark" className="mt-3">
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Day</th>
+              <th>Type</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {offeredTimePicked && (
               <tr>
-                <th>Group</th>
-                <th>Day</th>
-                <th>Type</th>
-                <th>Time</th>
+                <td>{offeredTimePicked.group}</td>
+                <td>{offeredTimePicked.day}</td>
+                <td>{offeredTimePicked.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
+                <td>{offeredTimePicked.startTime + ':' + offeredTimePicked.endTime}</td>
               </tr>
-            </thead>
-            <tbody>
-              {wantedTimePicked && (
-                <>
-                  {wantedTimePicked.map((value, key) => (
-                    <tr key={key}>
-                      <td>{value.group}</td>
-                      <td>{value.day}</td>
-                      <td>{value.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
-                      <td>{value.startTime + ':' + value.endTime}</td>
-                      <td>
-                        <Button
-                          variant="outline-danger"
-                          size="sm"
-                          onClick={() => HandleDeleteWantedRequestsFromTable(value.id)}
-                        >
-                          Delete
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </>
-              )}
-            </tbody>
-          </Table>
+            )}
+          </tbody>
+        </Table>
+        <div className=" dropdowns mt-3">
+          <InputGroup size="sm">
+            <DropdownButton variant="secondary" title="Time(s) you want" className="control">
+              {availableTimes.map((value, key) => (
+                <Dropdown.Item
+                  className="dropdownItem"
+                  key={key}
+                  onClick={() => handlePickingWantedTime(value)}
+                >
+                  Group: {value.group} {value.day} {value.type} {value.startTime}:{value.endTime}
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>
+            {/* /<Form.Control className="formControl" value={wantedTimeWordEntered} readOnly /> */}
+          </InputGroup>
+        </div>
+
+        <Table striped bordered hover variant="dark" className="mt-3">
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Day</th>
+              <th>Type</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {wantedTimePicked && (
+              <>
+                {wantedTimePicked.map((value, key) => (
+                  <tr key={key}>
+                    <td>{value.group}</td>
+                    <td>{value.day}</td>
+                    <td>{value.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
+                    <td>{value.startTime + ':' + value.endTime}</td>
+                    <td>
+                      <Button
+                        variant="outline-danger"
+                        size="sm"
+                        onClick={() => HandleDeleteWantedRequestsFromTable(value.id)}
+                      >
+                        Delete
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            )}
+          </tbody>
+        </Table>
+        <div className="submitButton">
           <Button
             variant="secondary"
-            size="sm"
+            size="md"
             className="mt-2 "
             onClick={() => HandleSubmitRequest()}
           >
             Submit Request
           </Button>
-          {message && (
-            <div className="form-group mt-3">
-              <div
-                className={successful ? 'alert alert-success' : 'alert alert-danger'}
-                role="alert"
-              >
-                {message}
-              </div>
+        </div>
+
+        {message && (
+          <div className="form-group mt-3">
+            <div className={successful ? 'alert alert-success' : 'alert alert-danger'} role="alert">
+              {message}
             </div>
-          )}
-        </Col>
-      </Row>
-      <Row>
-        <Col></Col>
+          </div>
+        )}
       </Row>
     </Container>
   );
