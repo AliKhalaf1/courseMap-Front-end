@@ -65,73 +65,80 @@ const SwapStatus = () => {
   const SwapStatusComponent = () => {
     return (
       <div className="swapStatus mt-4">
-        <h3>Swap Status</h3>
+        <h2>Swap Status</h2>
         <div className="mt-5">
-          {requestsList.map((value, key) => (
-            <div className="mt-5" key={key}>
-              <h5>Status: {value.status}</h5>
-              <Table className="mt-2">
-                <tbody>
-                  <tr>
-                    <td>{value.course.code}</td>
-                    <td>{globalFunctions.dateToString(value.createdAt)}</td>
-                    <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
-                  </tr>
-                </tbody>
-              </Table>
-              {value.matches && value.matches.length ? (
-                <>
-                  <Table striped bordered hover variant="dark">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Email</th>
-                        <th>Matched Time</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {value.matches.map((match, matchKey) => (
-                        <tr key={matchKey}>
-                          <td>{matchKey + 1}</td>
-                          <td>{match.matchedUser}</td>
-                          <td>d</td>
-
-                          <td>
-                            <Button
-                              variant="outline-success"
-                              onClick={() => HandleAcceptSwapRequest(match.id)}
-                            >
-                              Accept
-                            </Button>
-                            {'  '}
-                            <Button
-                              variant="outline-danger"
-                              onClick={() => HandleDeclineSwapRequest(match.id)}
-                            >
-                              Decline
-                            </Button>
-                          </td>
+          {requestsList && requestsList.length ? (
+            requestsList.map((value, key) => (
+              <div className="mt-5" key={key}>
+                <h5>Status: {value.status}</h5>
+                <Table className="mt-2">
+                  <tbody>
+                    <tr>
+                      <td>{value.course.code}</td>
+                      <td>{globalFunctions.dateToString(value.createdAt)}</td>
+                      <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+                {value.matches && value.matches.length ? (
+                  <>
+                    <Table striped bordered hover variant="dark">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Email</th>
+                          <th>Matched Time</th>
+                          <th>Actions</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </Table>
-                  {message && (
-                    <div className="form-group">
-                      <div
-                        className={successful ? 'alert alert-success' : 'alert alert-danger'}
-                        role="alert"
-                      >
-                        {message}
+                      </thead>
+                      <tbody>
+                        {value.matches.map((match, matchKey) => (
+                          <tr key={matchKey}>
+                            <td>{matchKey + 1}</td>
+                            <td>{match.matchedUser}</td>
+                            <td>d</td>
+
+                            <td>
+                              <Button
+                                variant="outline-success"
+                                onClick={() => HandleAcceptSwapRequest(match.id)}
+                              >
+                                Accept
+                              </Button>
+                              {'  '}
+                              <Button
+                                variant="outline-danger"
+                                onClick={() => HandleDeclineSwapRequest(match.id)}
+                              >
+                                Decline
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                    {message && (
+                      <div className="form-group">
+                        <div
+                          className={successful ? 'alert alert-success' : 'alert alert-danger'}
+                          role="alert"
+                        >
+                          {message}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
-          ))}
+                    )}
+                  </>
+                ) : (
+                  <></>
+                )}
+              </div>
+            ))
+          ) : (
+            <>
+            <h4>You have not made any requests... :/</h4>
+            <h5>Create a new one from <a href='/swap'>here</a></h5>
+            </>
+          )}
         </div>
       </div>
     );

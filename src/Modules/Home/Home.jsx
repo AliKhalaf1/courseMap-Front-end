@@ -19,8 +19,8 @@ const Home = () => {
           <a href="/swap">
             <Card.Body>
               <FaExchangeAlt className="icon" />
-              <h6>Create a swap Request.</h6>
-              <p></p>
+              <h5>Swap Request.</h5>
+              <p>Get a day free, fill a gap or attend with your friends. Swap a course with some one.</p>
             </Card.Body>
           </a>
         </Card>
@@ -29,7 +29,7 @@ const Home = () => {
           <a href="#course-map">
             <Card.Body>
               <RiMindMap className="icon" />
-              <h6>Make a course map.</h6>
+              <h5>Make a course map.</h5>
               <p>Create a full course map for the whole four years of your program.</p>
             </Card.Body>
           </a>
@@ -39,7 +39,7 @@ const Home = () => {
           <a href="#course-map">
             <Card.Body>
               <FaRegListAlt className="icon" />
-              <h6>Discover cousers.</h6>
+              <h5>Discover cousers.</h5>
               <p>List all the courses you can take during your program study.</p>
             </Card.Body>
           </a>
