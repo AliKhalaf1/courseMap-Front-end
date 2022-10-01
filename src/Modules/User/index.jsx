@@ -5,8 +5,8 @@ import Container from 'react-bootstrap/Container';
 const User = () => {
   return (
     <Container>
-      <UserCourseMap />
       <UserSwapRequests />
+      <UserCourseMap />
     </Container>
   );
 };
