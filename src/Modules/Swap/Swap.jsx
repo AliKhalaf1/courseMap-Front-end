@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -36,7 +35,6 @@ const Swap = () => {
   const [wantedTimePicked, setWantedTimePicked] = useState([]);
 
   const handlePickingSubject = (value) => {
-
     setFilteredData([]);
     setSubjectPicked(value);
     setSubjectWordEntered(value.name);

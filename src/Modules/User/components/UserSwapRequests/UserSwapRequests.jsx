@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import userSwapRequestsServices from '../../services/userSwapRequests.services';
 import Table from 'react-bootstrap/Table';
 import Loader from '../../../Loader/Loader';
-import functions from '../../../../Global/functions';
+import globalFunctions from '../../../../Global/functions';
 import Button from 'react-bootstrap/Button';
 const UserSwapRequests = () => {
   const [requestsList, setRequestsList] = useState(null);
@@ -42,11 +42,11 @@ const UserSwapRequests = () => {
               <tr key={key}>
                 <td>{key + 1}</td>
                 <td>{value.course.code}</td>
-                <td>{functions.dateToString(value.createdAt)}</td>
-                <td>{functions.timeToString(value.offeredTimeslot)}</td>
+                <td>{globalFunctions.dateToString(value.createdAt)}</td>
+                <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
                 <td>
                   {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
-                    <p key={wantedTimeslotsKey}>{functions.timeToString(time)}</p>
+                    <p key={wantedTimeslotsKey}>{globalFunctions.timeToString(time)}</p>
                   ))}
                 </td>
 

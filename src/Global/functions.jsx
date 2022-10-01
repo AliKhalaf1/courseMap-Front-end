@@ -31,8 +31,9 @@ const timeToString = (time) => {
   );
 };
 
-export default {
+const globalFunctions = {
   dateToString,
   timeToString,
   typeToString
 };
+export default globalFunctions;
