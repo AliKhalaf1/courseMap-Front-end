@@ -41,7 +41,7 @@ const Login = () => {
   return (
     <section className="register-container">
       <div className="card">
-        <h2 className="">Register</h2>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input type="email" className="form-control" placeholder="Email" {...register('email')} />
           <input

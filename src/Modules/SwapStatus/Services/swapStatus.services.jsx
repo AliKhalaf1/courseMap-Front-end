@@ -15,7 +15,9 @@ const declineSwapRequest = (id) =>
     .then((response) => {
       return response.data;
     });
-export default {
+
+const swapStatusServices = {
   acceptSwapRequest,
   declineSwapRequest
 };
+export default swapStatusServices;

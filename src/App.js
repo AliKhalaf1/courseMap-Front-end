@@ -6,6 +6,7 @@ import Register from './Modules/Register/Register';
 import Swap from './Modules/Swap/Swap';
 import User from './Modules/User';
 import SwapStatus from './Modules/SwapStatus/SwapStatus';
+import ExploreSwapRequests from './Modules/ExploreSwapRequests/ExploreSwapRequests';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/swap" element={<Swap />} />
         <Route path="/user" element={<User />} />
         <Route path="/swapstatus" element={<SwapStatus />} />
+        <Route path="/explore-request" element={<ExploreSwapRequests />} />
       </Routes>
     </>
   );

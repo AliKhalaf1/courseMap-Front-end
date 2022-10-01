@@ -12,7 +12,9 @@ const deleteRequest = (reqId) =>
     .then((response) => {
       return response;
     });
-export default {
+
+const userSwapRequestsServices = {
   getUserRequests,
   deleteRequest
 };
+export default userSwapRequestsServices;
