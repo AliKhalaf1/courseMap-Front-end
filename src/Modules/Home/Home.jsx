@@ -11,7 +11,7 @@ const Home = () => {
     <section id="home">
       <div className="home-text">
         <h3>CUFE Credit Hour System</h3>
-        <h1>Virtual Assistan</h1>
+        <h1>Virtual Assistant</h1>
         <h4>Customize your future course map the way you like</h4>
       </div>
       <CardGroup className="cards" md={1}>
@@ -20,7 +20,7 @@ const Home = () => {
             <Card.Body>
               <FaExchangeAlt className="icon" />
               <h5>Swap Request.</h5>
-              <p>Get a day free, fill a gap or attend with your friends. Swap a course with some one.</p>
+              <p>Get a day free, fill a gap or attend with your friends. Swap a course with someone.</p>
             </Card.Body>
           </a>
         </Card>
@@ -39,7 +39,7 @@ const Home = () => {
           <a href="#course-map">
             <Card.Body>
               <FaRegListAlt className="icon" />
-              <h5>Discover cousers.</h5>
+              <h5>Discover courses.</h5>
               <p>List all the courses you can take during your program study.</p>
             </Card.Body>
           </a>
