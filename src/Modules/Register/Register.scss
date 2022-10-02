@@ -22,7 +22,7 @@
     border-radius: 5px;
     margin: 20px auto;
   }
-  input {
+  input,select {
     background-color: #f8f9fa;
     padding: 15px 15px;
     margin-bottom: 10px;
@@ -51,5 +51,15 @@
   .alerts{
     padding: 0px;
     margin: 0px;
+  }
+  select{
+    padding:10px 20px;
+    text-transform: uppercase;
+
+    option{
+      color:black;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
   }
 }

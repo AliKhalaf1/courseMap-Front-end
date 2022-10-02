@@ -1,12 +1,12 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.scss';
 import { useForm } from 'react-hook-form';
 import loginServices from './Services/login.services';
-import { Navigate,useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 import authHeader from '../../Global/auth-header';
 import { Button } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
-const Login = ({location}) => {
+const Login = ({ location }) => {
   const loggedIn = Object.keys(authHeader()).length ? true : false;
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
@@ -15,12 +15,12 @@ const Login = ({location}) => {
   const { register, handleSubmit } = useForm({
     mode: 'onTouched'
   });
-  useEffect(()=>{
-    if(searchParams.get('emailConfirmed') === 'true'){
-      setMessage('Your email has been confirmed, you can login now.')
-      setSuccessful(true)
+  useEffect(() => {
+    if (searchParams.get('emailConfirmed') === 'true') {
+      setMessage('Your email has been confirmed, you can login now.');
+      setSuccessful(true);
     }
-  },[searchParams])
+  }, [searchParams]);
   const onSubmit = (data) => {
     setLoading(true);
     setMessage('');

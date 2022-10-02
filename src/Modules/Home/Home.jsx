@@ -34,7 +34,7 @@ const Home = () => {
           <h1>?</h1>
         </Card>
       </CardGroup>
-      <Footer/>
+      <Footer />
     </section>
   );
 };

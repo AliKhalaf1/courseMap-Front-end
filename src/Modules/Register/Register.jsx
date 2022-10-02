@@ -8,10 +8,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import authHeader from '../../Global/auth-header';
 import { Button } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
+import majors from '../../Assets/json/majors.json';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Form from 'react-bootstrap/Form';
+
 const Register = () => {
   const formSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    number: Yup.string().required('Number is required'),
     email: Yup.string().required('Email is required'),
     password: Yup.string()
       .required('Password is required')
@@ -25,6 +29,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState('');
+  const [major, setMajor] = useState('');
   const {
     register,
     handleSubmit,
@@ -37,14 +42,17 @@ const Register = () => {
   const onSubmit = (data) => {
     setLoading(true);
     delete data.cpassword;
-    delete data.number;
     setMessage('');
     setSuccessful(false);
     addUser(data).then(
       (response) => {
         setLoading(false);
         setSuccessful(true);
-        setMessage('Successful');
+        const resMessage =
+          (response.response && response.response.data && response.response.data.message) ||
+          response.message ||
+          response.toString();
+        setMessage(resMessage);
       },
       (error) => {
         setLoading(false);
@@ -61,6 +69,7 @@ const Register = () => {
   if (loggedIn) return <Navigate to="/" />;
   return (
     <section className="register-container">
+      {console.log(major)}
       <div className="card">
         <h2 className="">Register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -75,15 +84,21 @@ const Register = () => {
             {...register('email', { required: true })}
           />
 
-          <p className="alerts">{errors.number?.message}</p>
+          <p className="alerts">{errors.mobile?.message}</p>
           <input
             type="tel"
             className="form-control"
-            placeholder="Phone Number (Optional) (01xxxxxxxxx)"
+            placeholder="Phone (01xxxxxxxxx) (Optional)"
             pattern="[0]{1}[1]{1}[0-9]{9}"
-            {...register('number')}
+            {...register('mobile')}
           />
-
+          <Form.Select drop="up" title="Major" {...register('program')}>
+            {majors.map((value, key) => (
+              <option key={key} value={value} onClick={() => setMajor(value)}>
+                {value}
+              </option>
+            ))}
+          </Form.Select>
           <p className="alerts">{errors.password?.message}</p>
           <input
             type="password"

@@ -46,7 +46,6 @@ const Swap = () => {
     swapServices.getTimesOfCourse(value.code).then((response) => {
       setAvailableTimes(response);
       setLoading(false);
-
     });
   };
 
@@ -79,7 +78,7 @@ const Swap = () => {
       setSuccessful(false);
       setMessage('You didnt finish your request :(');
     } else {
-      setLoading(true)
+      setLoading(true);
       let wantedTimePickedIds = [];
       wantedTimePicked.forEach((wantedTime) => {
         wantedTimePickedIds.push(wantedTime.id);
@@ -109,7 +108,7 @@ const Swap = () => {
   }
   return (
     <Container>
-      {loading?<Loader/>:<></>}
+      {loading ? <Loader /> : <></>}
       <Row>
         <div className="input_group">
           <InputGroup size="sm">
@@ -129,7 +128,6 @@ const Swap = () => {
               ))}
             </div>
           )}
-          
         </div>
 
         <div className="dropdowns mt-3">
@@ -237,7 +235,6 @@ const Swap = () => {
         )}
       </Row>
     </Container>
-
   );
 };
 

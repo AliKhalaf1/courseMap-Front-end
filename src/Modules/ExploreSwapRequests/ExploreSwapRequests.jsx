@@ -27,19 +27,19 @@ const ExploreSwapRequests = () => {
 
   const handleQuery = (event) => {
     const searchWord = event.target.value;
-    setLoading(true)
+    setLoading(true);
     setSubjectWordEntered(searchWord);
     swapServices.getCoursesQuery(searchWord).then((response) => {
       setFilteredData(response);
-      setLoading(false)
+      setLoading(false);
     });
   };
 
   return (
     <Container>
       <div className="input_group">
-      <h4>Select a subject :D</h4>
-        <InputGroup size="sm" className='mt-3'>
+        <h4>Select a subject :D</h4>
+        <InputGroup size="sm" className="mt-3">
           <InputGroup.Text>Course</InputGroup.Text>
           <Form.Control value={subjectWordEntered} onChange={handleQuery} className="formControl" />
         </InputGroup>
