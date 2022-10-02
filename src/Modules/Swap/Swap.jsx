@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import swapServices from './Services/swap.services';
 import authHeader from '../../Global/auth-header';
 import Table from 'react-bootstrap/Table';
-
+import Loader from '../Loader/Loader';
 import { Navigate } from 'react-router-dom';
 import './Swap.scss';
 
@@ -41,17 +41,22 @@ const Swap = () => {
     setOfferedTimePickedId();
     setOfferedTimePicked();
     setWantedTimePicked();
+    setLoading(true);
     //setWantedTimeWordEntered('');
     swapServices.getTimesOfCourse(value.code).then((response) => {
       setAvailableTimes(response);
+      setLoading(false);
+
     });
   };
 
   const handleQuery = (event) => {
     const searchWord = event.target.value;
+    setLoading(true);
     setSubjectWordEntered(searchWord);
     swapServices.getCoursesQuery(searchWord).then((response) => {
       setFilteredData(response);
+      setLoading(false);
     });
   };
 
@@ -74,6 +79,7 @@ const Swap = () => {
       setSuccessful(false);
       setMessage('You didnt finish your request :(');
     } else {
+      setLoading(true)
       let wantedTimePickedIds = [];
       wantedTimePicked.forEach((wantedTime) => {
         wantedTimePickedIds.push(wantedTime.id);
@@ -103,6 +109,7 @@ const Swap = () => {
   }
   return (
     <Container>
+      {loading?<Loader/>:<></>}
       <Row>
         <div className="input_group">
           <InputGroup size="sm">
@@ -122,6 +129,7 @@ const Swap = () => {
               ))}
             </div>
           )}
+          
         </div>
 
         <div className="dropdowns mt-3">
@@ -229,6 +237,7 @@ const Swap = () => {
         )}
       </Row>
     </Container>
+
   );
 };
 

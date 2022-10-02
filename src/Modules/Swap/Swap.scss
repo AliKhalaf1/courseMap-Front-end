@@ -2,7 +2,7 @@
 //The whole input part (upper part)
 .input_group {
   margin: 10px 0 140px 0;
-  width: 35%;
+  width: 50%;
   //The dropdown of the picking subject
   .queryResult {
     margin-top: 5px;
@@ -54,3 +54,8 @@
  }
 }
 
+@media (max-width: 850px) {
+  .input_group{
+width:80%
+  }
+}

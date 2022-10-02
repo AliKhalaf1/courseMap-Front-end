@@ -27,9 +27,11 @@ const ExploreSwapRequests = () => {
 
   const handleQuery = (event) => {
     const searchWord = event.target.value;
+    setLoading(true)
     setSubjectWordEntered(searchWord);
     swapServices.getCoursesQuery(searchWord).then((response) => {
       setFilteredData(response);
+      setLoading(false)
     });
   };
 

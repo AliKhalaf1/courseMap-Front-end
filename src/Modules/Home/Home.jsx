@@ -2,10 +2,10 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './Home.scss';
-import { BsTable } from 'react-icons/bs';
-import { RiMindMap } from 'react-icons/ri';
+// import { BsTable } from 'react-icons/bs';
+// import { RiMindMap } from 'react-icons/ri';
 import { FaRegListAlt, FaExchangeAlt } from 'react-icons/fa';
-
+import Footer from '../Footer/Footer';
 const Home = () => {
   return (
     <section id="home">
@@ -34,6 +34,7 @@ const Home = () => {
           <h1>?</h1>
         </Card>
       </CardGroup>
+      <Footer/>
     </section>
   );
 };

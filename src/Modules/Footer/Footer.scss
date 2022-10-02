@@ -1,0 +1,17 @@
+#footer{
+    background-color: var(--color-dark);
+    width: 100%;
+    bottom:0px;
+    padding: 30px 0 ;
+    .col{
+        display: flex;
+  justify-content: center;
+  align-items: center;
+    }
+    img{
+        margin: auto;
+        width: 100px;
+        height:100px;
+        border-radius:80px;
+    }
+}
