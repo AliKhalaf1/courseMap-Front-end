@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import authHeader from '../../Global/auth-header';
 import { Button } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
-import './ForgetPassword.scss'
+import './ForgetPassword.scss';
 import forgetPasswordservices from './Services/forgetPassword.services';
 const ForgetPassword = () => {
   const loggedIn = Object.keys(authHeader()).length ? true : false;
@@ -46,11 +46,15 @@ const ForgetPassword = () => {
   return (
     <section id="forgotPassword" className="register-container">
       <div className="card">
-        
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h4>Enter your E-mail</h4>
-          <input type="email" className="form-control mt-3" placeholder="Email" {...register('email')} />
-          
+          <h4>Enter your E-mail</h4>
+          <input
+            type="email"
+            className="form-control mt-3"
+            placeholder="Email"
+            {...register('email')}
+          />
+
           <Button type="submit" disabled={loading}>
             {loading ? <Spinner as="span" animation="border" size="sm" /> : <></>}
             Send Link
@@ -65,7 +69,7 @@ const ForgetPassword = () => {
         )}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ForgetPassword
+export default ForgetPassword;

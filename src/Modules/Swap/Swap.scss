@@ -17,7 +17,7 @@
 
     .dataItem {
       width: 100%;
-      height: 30px;
+      height: 35px;
       display: flex;
       align-items: center;
       color: black;
@@ -60,6 +60,10 @@
 width:80%;
 .queryResult {
   width: 45%;
+  .dataItem{
+    height: 40px;
+    line-height: 15px;
+  }
   }
 }
 }

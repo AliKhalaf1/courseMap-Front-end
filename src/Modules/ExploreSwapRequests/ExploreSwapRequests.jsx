@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table';
 import exploreSwapRequestsServices from './Services/exploreSwapRequests.service';
 import Loader from '../Loader/Loader';
 import globalFunctions from '../../Global/functions';
-import './ExploreSwapRequests.scss'
+import './ExploreSwapRequests.scss';
 const ExploreSwapRequests = () => {
   const [loading, setLoading] = useState(false);
   //data for picking subject
@@ -48,7 +48,7 @@ const ExploreSwapRequests = () => {
           <div className="queryResult">
             {filteredData.map((value, key) => (
               <div key={key} className="dataItem" onClick={() => handlePickingSubject(value)}>
-                <p>{value.code + " - " + value.name}</p>
+                <p>{value.code + ' - ' + value.name}</p>
               </div>
             ))}
           </div>
@@ -61,40 +61,39 @@ const ExploreSwapRequests = () => {
           {subjectPicked ? (
             <div>
               {listOfRequests && listOfRequests.length ? (
-                  <div class="table-responsive">
-                <Table striped bordered hover variant="dark" className="mt-3">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>User</th>
-                      <th>Email</th>
-                      <th>Created at</th>
-                      <th>Offered Time Slot</th>
-                      <th>Wanted Time Slot(s)</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {listOfRequests.map((value, key) => (
-                      <tr key={key}>
-                        <td>{key + 1}</td>
-                        <td>{value.user.name}</td>
-                        <td>{value.user.email}</td>
-                        <td>{globalFunctions.dateToString(value.createdAt)}</td>
-                        <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
-                        <td>
-                          {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
-                            <p key={wantedTimeslotsKey}>{globalFunctions.timeToString(time)}</p>
-                          ))}
-                        </td>
-
-                        <td>{value.status}</td>
+                <div class="table-responsive">
+                  <Table striped bordered hover variant="dark" className="mt-3">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Email</th>
+                        <th>Created at</th>
+                        <th>Offered Time Slot</th>
+                        <th>Wanted Time Slot(s)</th>
+                        <th>Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </Table>
-           </div>
+                    </thead>
+                    <tbody>
+                      {listOfRequests.map((value, key) => (
+                        <tr key={key}>
+                          <td>{key + 1}</td>
+                          <td>{value.user.name}</td>
+                          <td>{value.user.email}</td>
+                          <td>{globalFunctions.dateToString(value.createdAt)}</td>
+                          <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
+                          <td>
+                            {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
+                              <p key={wantedTimeslotsKey}>{globalFunctions.timeToString(time)}</p>
+                            ))}
+                          </td>
 
+                          <td>{value.status}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </div>
               ) : (
                 <h2>No swap requests available</h2>
               )}

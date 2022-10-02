@@ -61,9 +61,9 @@ const Login = ({ location }) => {
             <a href="/register">Create an account</a>
           </div>
           <div>
-          <a href="/forget-password">Forgot your password?</a>
+            <a href="/forget-password">Forgot your password?</a>
           </div>
-          
+
           <Button type="submit" disabled={loading}>
             {loading ? <Spinner as="span" animation="border" size="sm" /> : <></>}
             Login

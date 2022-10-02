@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Navigate, useSearchParams  } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import authHeader from '../../Global/auth-header';
 import { Button } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
-import './ResetPassword.scss'
+import './ResetPassword.scss';
 import resetPasswordServices from './Services/resetPassword.services';
 const ResetPassword = () => {
   const formSchema = Yup.object().shape({
@@ -37,8 +37,8 @@ const ResetPassword = () => {
     delete data.cpassword;
     setMessage('');
     setSuccessful(false);
-    const token = "Bearer "+searchParams.get('token')
-    resetPasswordServices.resetPassword(token,data).then(
+    const token = 'Bearer ' + searchParams.get('token');
+    resetPasswordServices.resetPassword(token, data).then(
       (response) => {
         setLoading(false);
         setSuccessful(true);
@@ -49,7 +49,6 @@ const ResetPassword = () => {
         setMessage(resMessage);
       },
       (error) => {
-        console.log(error)
         setLoading(false);
         const resMessage =
           (error.response && error.response.data && error.response.data.message) ||
@@ -98,7 +97,7 @@ const ResetPassword = () => {
         )}
       </div>
     </section>
-    );
-}
+  );
+};
 
-export default ResetPassword
+export default ResetPassword;

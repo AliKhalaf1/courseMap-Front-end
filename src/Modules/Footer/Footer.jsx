@@ -10,15 +10,15 @@ const Footer = () => {
       <h5>Created by</h5>
       <Container className="footerContainer ">
         <div className="image_container">
-          <img src={AliImage} alt=""/>
+          <img src={AliImage} alt="" />
           <p>Ali Khalaf</p>
         </div>
         <div className="image_container">
-          <img src={KhaledImage} alt=""/>
+          <img src={KhaledImage} alt="" />
           <p>Khaled Mamdouh</p>
         </div>
         <div className="image_container">
-          <img src={YoussefImage} alt=""/>
+          <img src={YoussefImage} alt="" />
           <p>Yousef Gilany</p>
         </div>
       </Container>

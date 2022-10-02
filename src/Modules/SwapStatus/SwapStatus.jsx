@@ -74,7 +74,7 @@ const SwapStatus = () => {
                 <Table className="mt-2">
                   <tbody>
                     <tr>
-                      <td>{value.course.code + " - " +value.course.name}</td>
+                      <td>{value.course.code + ' - ' + value.course.name}</td>
                       <td>{globalFunctions.dateToString(value.createdAt)}</td>
                       <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
                     </tr>

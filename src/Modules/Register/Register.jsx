@@ -67,7 +67,6 @@ const Register = () => {
   if (loggedIn) return <Navigate to="/" />;
   return (
     <section className="register-container">
-      {console.log(major)}
       <div className="card">
         <h2 className="">Register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>

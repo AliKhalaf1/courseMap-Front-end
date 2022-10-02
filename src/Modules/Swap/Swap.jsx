@@ -123,7 +123,7 @@ const Swap = () => {
             <div className="queryResult">
               {filteredData.map((value, key) => (
                 <div key={key} className="dataItem" onClick={() => handlePickingSubject(value)}>
-                  <p>{value.code + " - " + value.name}</p> 
+                  <p>{value.code + ' - ' + value.name}</p>
                 </div>
               ))}
             </div>
@@ -146,26 +146,26 @@ const Swap = () => {
           </InputGroup>
         </div>
         <div class="table-responsive">
-        <Table striped bordered hover variant="dark" className="mt-3">
-          <thead>
-            <tr>
-              <th>Group</th>
-              <th>Day</th>
-              <th>Type</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {offeredTimePicked && (
+          <Table striped bordered hover variant="dark" className="mt-3">
+            <thead>
               <tr>
-                <td>{offeredTimePicked.group}</td>
-                <td>{offeredTimePicked.day}</td>
-                <td>{offeredTimePicked.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
-                <td>{offeredTimePicked.startTime + ':' + offeredTimePicked.endTime}</td>
+                <th>Group</th>
+                <th>Day</th>
+                <th>Type</th>
+                <th>Time</th>
               </tr>
-            )}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {offeredTimePicked && (
+                <tr>
+                  <td>{offeredTimePicked.group}</td>
+                  <td>{offeredTimePicked.day}</td>
+                  <td>{offeredTimePicked.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
+                  <td>{offeredTimePicked.startTime + ':' + offeredTimePicked.endTime}</td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
         </div>
         <div className=" dropdowns mt-3">
           <InputGroup size="sm">
@@ -183,40 +183,40 @@ const Swap = () => {
             {/* /<Form.Control className="formControl" value={wantedTimeWordEntered} readOnly /> */}
           </InputGroup>
         </div>
-        <div class="table-responsive">       
-        <Table striped bordered hover variant="dark" className="mt-3">
-          <thead>
-            <tr>
-              <th>Group</th>
-              <th>Day</th>
-              <th>Type</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {wantedTimePicked && (
-              <>
-                {wantedTimePicked.map((value, key) => (
-                  <tr key={key}>
-                    <td>{value.group}</td>
-                    <td>{value.day}</td>
-                    <td>{value.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
-                    <td>{value.startTime + ':' + value.endTime}</td>
-                    <td>
-                      <Button
-                        variant="outline-danger"
-                        size="sm"
-                        onClick={() => HandleDeleteWantedRequestsFromTable(value.id)}
-                      >
-                        Delete
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </>
-            )}
-          </tbody>
-        </Table>
+        <div class="table-responsive">
+          <Table striped bordered hover variant="dark" className="mt-3">
+            <thead>
+              <tr>
+                <th>Group</th>
+                <th>Day</th>
+                <th>Type</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {wantedTimePicked && (
+                <>
+                  {wantedTimePicked.map((value, key) => (
+                    <tr key={key}>
+                      <td>{value.group}</td>
+                      <td>{value.day}</td>
+                      <td>{value.type === 'lec' ? 'Lecture' : 'Tutorial'}</td>
+                      <td>{value.startTime + ':' + value.endTime}</td>
+                      <td>
+                        <Button
+                          variant="outline-danger"
+                          size="sm"
+                          onClick={() => HandleDeleteWantedRequestsFromTable(value.id)}
+                        >
+                          Delete
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              )}
+            </tbody>
+          </Table>
         </div>
         <div className="submitButton">
           <Button
