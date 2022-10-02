@@ -47,7 +47,7 @@ const ExploreSwapRequests = () => {
           <div className="queryResult">
             {filteredData.map((value, key) => (
               <div key={key} className="dataItem" onClick={() => handlePickingSubject(value)}>
-                <p>{value.code} - {value.name} </p>
+                <p>{value.code + " - " + value.name}</p>
               </div>
             ))}
           </div>

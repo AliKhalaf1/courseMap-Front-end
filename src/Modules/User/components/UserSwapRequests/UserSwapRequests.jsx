@@ -41,7 +41,7 @@ const UserSwapRequests = () => {
             {requestsList.map((value, key) => (
               <tr key={key}>
                 <td>{key + 1}</td>
-                <td>{value.course.code}</td>
+                <td>{value.course.code + " - " +value.course.name}</td>
                 <td>{globalFunctions.dateToString(value.createdAt)}</td>
                 <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
                 <td>

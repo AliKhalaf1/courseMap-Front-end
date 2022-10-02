@@ -24,7 +24,7 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/swap">Swap</Nav.Link>
-              <Nav.Link href="/explore-request">Search-Swap</Nav.Link>
+              <Nav.Link href="/explore-request">Explore</Nav.Link>
               {loggedIn ? (
                 <>
                   <Nav.Link href="/swapstatus">My Swap Status</Nav.Link>
