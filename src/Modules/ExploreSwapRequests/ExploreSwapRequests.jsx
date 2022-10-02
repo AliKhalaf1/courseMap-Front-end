@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 import exploreSwapRequestsServices from './Services/exploreSwapRequests.service';
 import Loader from '../Loader/Loader';
 import globalFunctions from '../../Global/functions';
+import './ExploreSwapRequests.scss'
 const ExploreSwapRequests = () => {
   const [loading, setLoading] = useState(false);
   //data for picking subject
@@ -36,7 +37,7 @@ const ExploreSwapRequests = () => {
   };
 
   return (
-    <Container>
+    <Container id="explore">
       <div className="input_group">
         <h4>Select a subject :D</h4>
         <InputGroup size="sm" className="mt-3">
@@ -60,6 +61,7 @@ const ExploreSwapRequests = () => {
           {subjectPicked ? (
             <div>
               {listOfRequests && listOfRequests.length ? (
+                  <div class="table-responsive">
                 <Table striped bordered hover variant="dark" className="mt-3">
                   <thead>
                     <tr>
@@ -91,6 +93,8 @@ const ExploreSwapRequests = () => {
                     ))}
                   </tbody>
                 </Table>
+           </div>
+
               ) : (
                 <h2>No swap requests available</h2>
               )}

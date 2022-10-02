@@ -7,6 +7,8 @@ import Swap from './Modules/Swap/Swap';
 import User from './Modules/User';
 import SwapStatus from './Modules/SwapStatus/SwapStatus';
 import ExploreSwapRequests from './Modules/ExploreSwapRequests/ExploreSwapRequests';
+import ResetPassword from './Modules/ResetPassword/ResetPassword';
+import ForgetPassword from './Modules/ForgetPassword/ForgetPassword';
 import './App.css';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path="/user" element={<User />} />
         <Route path="/swapstatus" element={<SwapStatus />} />
         <Route path="/explore-request" element={<ExploreSwapRequests />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
       </Routes>
     </>
   );

@@ -145,6 +145,7 @@ const Swap = () => {
             </DropdownButton>
           </InputGroup>
         </div>
+        <div class="table-responsive">
         <Table striped bordered hover variant="dark" className="mt-3">
           <thead>
             <tr>
@@ -165,6 +166,7 @@ const Swap = () => {
             )}
           </tbody>
         </Table>
+        </div>
         <div className=" dropdowns mt-3">
           <InputGroup size="sm">
             <DropdownButton variant="secondary" title="Time(s) you want" className="control">
@@ -181,7 +183,7 @@ const Swap = () => {
             {/* /<Form.Control className="formControl" value={wantedTimeWordEntered} readOnly /> */}
           </InputGroup>
         </div>
-
+        <div class="table-responsive">       
         <Table striped bordered hover variant="dark" className="mt-3">
           <thead>
             <tr>
@@ -215,6 +217,7 @@ const Swap = () => {
             )}
           </tbody>
         </Table>
+        </div>
         <div className="submitButton">
           <Button
             variant="secondary"

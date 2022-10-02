@@ -1,36 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import './Login.scss';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import loginServices from './Services/login.services';
-import { Navigate, useSearchParams } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 import authHeader from '../../Global/auth-header';
 import { Button } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
-const Login = ({ location }) => {
+import './ForgetPassword.scss'
+import forgetPasswordservices from './Services/forgetPassword.services';
+const ForgetPassword = () => {
   const loggedIn = Object.keys(authHeader()).length ? true : false;
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState('');
-  const [searchParams] = useSearchParams();
   const { register, handleSubmit } = useForm({
     mode: 'onTouched'
   });
-  useEffect(() => {
-    if (searchParams.get('emailConfirmed') === 'true') {
-      setMessage('Your email has been confirmed, you can login now.');
-      setSuccessful(true);
-    }
-  }, [searchParams]);
+
   const onSubmit = (data) => {
     setLoading(true);
+    delete data.cpassword;
     setMessage('');
     setSuccessful(false);
-    loginServices.login(data).then(
+    forgetPasswordservices.forgetPassword(data).then(
       (response) => {
         setLoading(false);
         setSuccessful(true);
-        setMessage('Successful');
-        window.location.reload();
+        const resMessage =
+          (response.response && response.response.data && response.response.data.message) ||
+          response.message ||
+          response.toString();
+        setMessage(resMessage);
       },
       (error) => {
         setLoading(false);
@@ -46,27 +44,16 @@ const Login = ({ location }) => {
   };
   if (loggedIn) return <Navigate to="/" />;
   return (
-    <section id="login" className="register-container">
+    <section id="forgotPassword" className="register-container">
       <div className="card">
-        <h2>Login</h2>
+        
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="email" className="form-control" placeholder="Email" {...register('email')} />
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            {...register('password')}
-          />
-          <div>
-            <a href="/register">Create an account</a>
-          </div>
-          <div>
-          <a href="/forget-password">Forgot your password?</a>
-          </div>
+        <h4>Enter your E-mail</h4>
+          <input type="email" className="form-control mt-3" placeholder="Email" {...register('email')} />
           
           <Button type="submit" disabled={loading}>
             {loading ? <Spinner as="span" animation="border" size="sm" /> : <></>}
-            Login
+            Send Link
           </Button>
         </form>
         {message && (
@@ -78,7 +65,7 @@ const Login = ({ location }) => {
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Login;
+export default ForgetPassword

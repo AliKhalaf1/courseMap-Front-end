@@ -27,7 +27,7 @@ const Header = () => {
               <Nav.Link href="/explore-request">Explore</Nav.Link>
               {loggedIn ? (
                 <>
-                  <Nav.Link href="/swapstatus">My Swap Status</Nav.Link>
+                  <Nav.Link href="/swapstatus">Swap Status</Nav.Link>
                 </>
               ) : (
                 <></>

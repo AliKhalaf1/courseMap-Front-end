@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
-import './Register.scss';
 import { useForm } from 'react-hook-form';
-import { addUser } from './Services/register.services';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useSearchParams  } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import authHeader from '../../Global/auth-header';
 import { Button } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
-import majors from '../../Assets/json/majors.json';
-import Form from 'react-bootstrap/Form';
-
-const Register = () => {
+import './ResetPassword.scss'
+import resetPasswordServices from './Services/resetPassword.services';
+const ResetPassword = () => {
   const formSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    email: Yup.string().required('Email is required'),
     password: Yup.string()
       .required('Password is required')
       .min(8, 'Password length should be at least 8 characters'),
@@ -27,7 +22,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState('');
-  const [major, setMajor] = useState('');
+  const [searchParams] = useSearchParams();
   const {
     register,
     handleSubmit,
@@ -42,7 +37,8 @@ const Register = () => {
     delete data.cpassword;
     setMessage('');
     setSuccessful(false);
-    addUser(data).then(
+    const token = "Bearer "+searchParams.get('token')
+    resetPasswordServices.resetPassword(token,data).then(
       (response) => {
         setLoading(false);
         setSuccessful(true);
@@ -53,6 +49,7 @@ const Register = () => {
         setMessage(resMessage);
       },
       (error) => {
+        console.log(error)
         setLoading(false);
         const resMessage =
           (error.response && error.response.data && error.response.data.message) ||
@@ -66,37 +63,10 @@ const Register = () => {
   };
   if (loggedIn) return <Navigate to="/" />;
   return (
-    <section className="register-container">
-      {console.log(major)}
+    <section id="resetPassword" className="register-container">
       <div className="card">
-        <h2 className="">Register</h2>
+        <h2 className="">New password</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <p className="alerts">{errors.name?.message}</p>
-          <input type="text" className="form-control" placeholder="Name" {...register('name')} />
-
-          <p className="alerts">{errors.email?.message}</p>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Email"
-            {...register('email', { required: true })}
-          />
-
-          <p className="alerts">{errors.mobile?.message}</p>
-          <input
-            type="tel"
-            className="form-control"
-            placeholder="Phone (01xxxxxxxxx) (Optional)"
-            pattern="[0]{1}[1]{1}[0-9]{9}"
-            {...register('mobile')}
-          />
-          <Form.Select drop="up" title="Major" {...register('program')}>
-            {majors.map((value, key) => (
-              <option key={key} value={value} onClick={() => setMajor(value)}>
-                {value}
-              </option>
-            ))}
-          </Form.Select>
           <p className="alerts">{errors.password?.message}</p>
           <input
             type="password"
@@ -112,12 +82,9 @@ const Register = () => {
             placeholder="Confirm Password"
             {...register('cpassword')}
           />
-          <div>
-            <a href="/login">Already have an account? Login</a>
-          </div>
           <Button type="submit" disabled={loading}>
             {loading ? <Spinner as="span" animation="border" size="sm" /> : <></>}
-            Create Account
+            Set Password
           </Button>
           {/* <button>Create Account</button> */}
         </form>
@@ -131,7 +98,7 @@ const Register = () => {
         )}
       </div>
     </section>
-  );
-};
+    );
+}
 
-export default Register;
+export default ResetPassword

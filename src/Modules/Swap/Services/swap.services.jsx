@@ -25,8 +25,10 @@ const postSwapRequest = (wantedTimeslots, offeredTimeslot) =>
     .then((response) => {
       return response.data;
     });
-export default {
+
+const swapServices = {
   getCoursesQuery,
   getTimesOfCourse,
   postSwapRequest
 };
+export default swapServices;
