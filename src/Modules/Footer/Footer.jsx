@@ -6,13 +6,23 @@ import KhaledImage from '../../Assets/Khaled.jpeg'
 import YoussefImage from '../../Assets/Youssef.jpeg'
 const Footer = () => {
   return (
-    <div id="footer">
-        <Container className='px-5'>
-        <Row>
-        <Col className='red'><img src={AliImage} /></Col>
-        <Col><img src={KhaledImage} /></Col>
-        <Col><img src={YoussefImage} /></Col>
-      </Row>
+    <div id="footer"> 
+    <h5>Created by</h5>
+        <Container className='footerContainer '>
+           
+        <div className='image_container'>
+            <img src={AliImage} />
+            <p>Ali Khalaf</p>
+        </div>
+        <div className='image_container'>
+            <img src={KhaledImage} />
+            <p>Khaled Mamdouh</p>
+        </div>
+        <div className='image_container'>
+            <img src={YoussefImage} />
+            <p>Yousef Gilany</p>
+        </div>
+
         </Container>
     </div>
   )
