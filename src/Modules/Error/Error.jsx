@@ -8,7 +8,7 @@ const Error = () => {
 
   return (
     <div id ="errorPage" className='containe'>
-        <Snowfall snowflakeCount={200} className="snow"/>
+        <Snowfall snowflakeCount={300} className="snow"/>
        
         
         <h1 classname='l'>404</h1>
