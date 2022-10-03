@@ -9,13 +9,12 @@ import Button from 'react-bootstrap/Button';
 import swapServices from '../../Services/swap.services';
 import authHeader from '../../../../Global/auth-header';
 import Table from 'react-bootstrap/Table';
-import Loader from '../../../Loader/Loader';
 import { Navigate } from 'react-router-dom';
 import './AddSwapRequest.scss';
 
-const AddSwapRequest = () => {
+const AddSwapRequest = (props) => {
   const loggedIn = Object.keys(authHeader()).length ? true : false;
-  const [loading, setLoading] = useState(false);
+
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState('');
   //data for picking subject
@@ -41,21 +40,21 @@ const AddSwapRequest = () => {
     setOfferedTimePickedId();
     setOfferedTimePicked();
     setWantedTimePicked();
-    setLoading(true);
+    props.setLoading(true);
     //setWantedTimeWordEntered('');
     swapServices.getTimesOfCourse(value.code).then((response) => {
       setAvailableTimes(response);
-      setLoading(false);
+      props.setLoading(false);
     });
   };
 
   const handleQuery = (event) => {
     const searchWord = event.target.value;
-    setLoading(true);
+    props.setLoading(true);
     setSubjectWordEntered(searchWord);
     swapServices.getCoursesQuery(searchWord).then((response) => {
       setFilteredData(response);
-      setLoading(false);
+      props.setLoading(false);
     });
   };
 
@@ -78,7 +77,7 @@ const AddSwapRequest = () => {
       setSuccessful(false);
       setMessage('You didnt finish your request :(');
     } else {
-      setLoading(true);
+      props.setLoading(true);
       let wantedTimePickedIds = [];
       wantedTimePicked.forEach((wantedTime) => {
         wantedTimePickedIds.push(wantedTime.id);
@@ -86,12 +85,13 @@ const AddSwapRequest = () => {
 
       swapServices.postSwapRequest(wantedTimePickedIds, offeredTimePickedId).then(
         (response) => {
-          setLoading(false);
+          props.setLoading(false);
+          props.setNumberOfAddedRequests(props.numberOfAddedRequests + 1);
           setSuccessful(true);
           setMessage('Successful');
         },
         (error) => {
-          setLoading(false);
+          props.setLoading(false);
           const resMessage =
             (error.response && error.response.data && error.response.data.message) ||
             error.message ||
@@ -108,7 +108,6 @@ const AddSwapRequest = () => {
   }
   return (
     <Container>
-      {loading ? <Loader /> : <></>}
       <Row>
         <div className="input_group">
           <InputGroup size="sm">

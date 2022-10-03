@@ -7,30 +7,32 @@ import Loader from '../../../Loader/Loader';
 import Button from 'react-bootstrap/Button';
 import swapServices from '../../Services/swap.services';
 import './SwapStatus.scss';
-const SwapStatus = () => {
+const SwapStatus = (props) => {
   const [requestsList, setRequestsList] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [successful, setSuccessful] = useState(false);
+  const [renderingList, setRenderingList] = useState(false);
   useEffect(() => {
-    setLoading(true);
+    props.setLoading(true);
+    setRenderingList(true);
     userSwapRequestsServices.getUserRequests().then((res) => {
       setRequestsList(res);
-      setLoading(false);
+      props.setLoading(false);
+      setRenderingList(false);
     });
-  }, []);
+  }, [props.numberOfAddedRequests]);
 
   const HandleAcceptSwapRequest = (valueId, matchedId) => {
-    setLoading(true);
+    props.setLoading(true);
     setMessage('');
     swapServices.acceptSwapRequest(valueId, matchedId).then(
       (res) => {
-        setLoading(false);
+        props.setLoading(false);
         setMessage('Successful');
         setSuccessful(true);
       },
       (error) => {
-        setLoading(false);
+        props.setLoading(false);
         const resMessage =
           (error.response && error.response.data && error.response.data.message) ||
           error.message ||
@@ -42,16 +44,16 @@ const SwapStatus = () => {
     );
   };
   const HandleDeclineSwapRequest = (valueId, matchedId) => {
-    setLoading(true);
+    props.setLoading(true);
     setMessage('');
     swapServices.declineSwapRequest(valueId, matchedId).then(
       (res) => {
-        setLoading(false);
+        props.setLoading(false);
         setMessage('Successful');
         setSuccessful(true);
       },
       (error) => {
-        setLoading(false);
+        props.setLoading(false);
         const resMessage =
           (error.response && error.response.data && error.response.data.message) ||
           error.message ||
@@ -138,16 +140,14 @@ const SwapStatus = () => {
           ) : (
             <>
               <h4>You have not made any requests... :/</h4>
-              <h5>
-                Create a new one from <a href="/swap">here</a>
-              </h5>
+              <h5>Create a new one</h5>
             </>
           )}
         </div>
       </div>
     );
   };
-  return <Container>{loading ? <Loader /> : <SwapStatusComponent />}</Container>;
+  return <Container>{renderingList ? <Loader /> : <SwapStatusComponent />}</Container>;
 };
 
 export default SwapStatus;
