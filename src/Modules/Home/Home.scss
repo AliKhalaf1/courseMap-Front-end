@@ -1,33 +1,45 @@
 #home {
   padding-top: 150px;
   margin: 0 auto;
+  justify-content: center;
+
   .home-text {
     text-align: center;
   }
-  .cards {
+  .homeContainer {
     margin: 70px auto;
     width: 70%;
     gap: 12%;
-
-    .card {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    .homeCard {
+      display: block;
       overflow: hidden;
       background-color: var(--color-info);
       border: 0;
-      text-align: left;
+      text-align: center;
+      padding: 10px 50px;
+      border-radius: 40px;
       .icon {
-        font-size: 24px;
-        margin: 10px 0;
+        font-size: 18px;
+        margin-right: 10px;
       }
     }
-    .card:hover {
-      transform: scale(1.1);
-      transition: var(--transition);
-    }
+    
   }
   a {
-    color: blue;
+    color: white;
     padding: 0;
     margin: 0;
+    font-size: 16px;
+    width: 35%;
+
+  }
+  a:hover{
+      transform: scale(1.1);
+      transition: var(--transition);
+  
   }
   p{
     font-size: 15px;
@@ -36,22 +48,28 @@
     font-size: 23px;
     margin-bottom: 18px;
   }
+  h6{
+    font-weight: lighter;
+    font-size: 18px;
+  }
+  @media (max-width: 1000px) {
+    .homeContainer {
+      width: 90%;
+    }
+    a{
+      width: 45%;
+    }
+    
+  }
   @media (max-width: 700px) {
-    .cards {
-      * {
-        flex: auto !important;
+    h6{
+      font-size: 14px;
+    }
+    .homeContainer {
+      display: block;
+      .homeCard{
+        margin-top: 15px;
       }
     }
   }
-  .mystery{
-    align-items: center;
-    h1{
-      font-size: 130px;
-      position: absolute;
-      top: 45%;
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-    }
-  }
-  
 }

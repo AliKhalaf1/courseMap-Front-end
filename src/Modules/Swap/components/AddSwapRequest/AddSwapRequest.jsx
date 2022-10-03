@@ -10,7 +10,7 @@ import swapServices from '../../Services/swap.services';
 import authHeader from '../../../../Global/auth-header';
 import Table from 'react-bootstrap/Table';
 import { Navigate } from 'react-router-dom';
-import {BsXLg} from 'react-icons/bs'
+import { BsXLg } from 'react-icons/bs';
 import './AddSwapRequest.scss';
 
 const AddSwapRequest = (props) => {
@@ -117,7 +117,8 @@ const AddSwapRequest = (props) => {
               value={subjectWordEntered}
               onChange={handleQuery}
               className="formControl"
-            /> <BsXLg className="removeWordIcon" onClick={() => setSubjectWordEntered('')}/>
+            />{' '}
+            <BsXLg className="removeWordIcon" onClick={() => setSubjectWordEntered('')} />
           </InputGroup>
           {filteredData.length !== 0 && (
             <div className="queryResult">
