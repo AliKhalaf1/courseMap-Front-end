@@ -8,6 +8,7 @@ import User from './Modules/User';
 import ExploreSwapRequests from './Modules/ExploreSwapRequests/ExploreSwapRequests';
 import ResetPassword from './Modules/ResetPassword/ResetPassword';
 import ForgetPassword from './Modules/ForgetPassword/ForgetPassword';
+import Error from './Modules/Error/Error';
 import './App.css';
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
         <Route path="/explore-request" element={<ExploreSwapRequests />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
+
+        {/* has to be last one */}
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );
