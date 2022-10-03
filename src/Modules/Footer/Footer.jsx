@@ -13,10 +13,14 @@ const Footer = () => {
           <img src={AliImage} alt="" />
           <p>Ali Khalaf</p>
         </div>
+        
         <div className="image_container">
+        <a href="https://solarsystem.nasa.gov/moons/earths-moon/overview/" target="_blank">
           <img src={KhaledImage} alt="" />
           <p>Khaled Mamdouh</p>
+          </a>
         </div>
+        
         <div className="image_container">
           <img src={YoussefImage} alt="" />
           <p>Yousef Gilany</p>
