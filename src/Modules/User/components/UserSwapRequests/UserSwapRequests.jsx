@@ -26,7 +26,7 @@ const UserSwapRequests = () => {
     return (
       <div className="mt-4">
         <h2>Swap Requests</h2>
-        <div class="table-responsive">
+        <div className="table-responsive">
           <Table striped bordered hover variant="dark" className="mt-3">
             <thead>
               <tr>

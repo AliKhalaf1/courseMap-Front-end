@@ -25,10 +25,33 @@ const postSwapRequest = (wantedTimeslots, offeredTimeslot) =>
     .then((response) => {
       return response.data;
     });
+const acceptSwapRequest = (valueId, matchedId) =>
+  axios
+    .post(
+      `${configs.API_BASE_URL}/swap-requests/${valueId}/agree`,
+      { matchedSwapRequestId: matchedId },
+      { headers: authHeader() }
+    )
+    .then((response) => {
+      return response.data;
+    });
+
+const declineSwapRequest = (valueId, matchedId) =>
+  axios
+    .post(
+      `${configs.API_BASE_URL}/swap-requests/${valueId}/disagree`,
+      { matchedSwapRequestId: matchedId },
+      { headers: authHeader() }
+    )
+    .then((response) => {
+      return response.data;
+    });
 
 const swapServices = {
   getCoursesQuery,
   getTimesOfCourse,
-  postSwapRequest
+  postSwapRequest,
+  acceptSwapRequest,
+  declineSwapRequest
 };
 export default swapServices;

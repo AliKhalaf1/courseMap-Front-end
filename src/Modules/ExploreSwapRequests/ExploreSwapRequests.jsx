@@ -61,7 +61,7 @@ const ExploreSwapRequests = () => {
           {subjectPicked ? (
             <div>
               {listOfRequests && listOfRequests.length ? (
-                <div class="table-responsive">
+                <div className="table-responsive">
                   <Table striped bordered hover variant="dark" className="mt-3">
                     <thead>
                       <tr>

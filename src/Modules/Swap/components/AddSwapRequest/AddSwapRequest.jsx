@@ -6,14 +6,14 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
-import swapServices from './Services/swap.services';
-import authHeader from '../../Global/auth-header';
+import swapServices from '../../Services/swap.services';
+import authHeader from '../../../../Global/auth-header';
 import Table from 'react-bootstrap/Table';
-import Loader from '../Loader/Loader';
+import Loader from '../../../Loader/Loader';
 import { Navigate } from 'react-router-dom';
-import './Swap.scss';
+import './AddSwapRequest.scss';
 
-const Swap = () => {
+const AddSwapRequest = () => {
   const loggedIn = Object.keys(authHeader()).length ? true : false;
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
@@ -183,7 +183,7 @@ const Swap = () => {
             {/* /<Form.Control className="formControl" value={wantedTimeWordEntered} readOnly /> */}
           </InputGroup>
         </div>
-        <div class="table-responsive">
+        <div className="table-responsive">
           <Table striped bordered hover variant="dark" className="mt-3">
             <thead>
               <tr>
@@ -241,4 +241,4 @@ const Swap = () => {
   );
 };
 
-export default Swap;
+export default AddSwapRequest;

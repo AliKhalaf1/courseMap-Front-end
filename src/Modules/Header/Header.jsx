@@ -25,13 +25,6 @@ const Header = () => {
             <Nav className="me-auto">
               <Nav.Link href="/swap">Swap</Nav.Link>
               <Nav.Link href="/explore-request">Explore</Nav.Link>
-              {loggedIn ? (
-                <>
-                  <Nav.Link href="/swapstatus">Swap Status</Nav.Link>
-                </>
-              ) : (
-                <></>
-              )}
             </Nav>
             <Nav>
               {loggedIn ? (

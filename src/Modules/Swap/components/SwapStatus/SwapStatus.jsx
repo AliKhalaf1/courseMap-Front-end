@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import userSwapRequestsServices from '../User/services/userSwapRequests.services';
+import userSwapRequestsServices from '../../../User/services/userSwapRequests.services';
 import Table from 'react-bootstrap/Table';
-import globalFunctions from '../../Global/functions';
-import Loader from '../Loader/Loader';
+import globalFunctions from '../../../../Global/functions';
+import Loader from '../../../Loader/Loader';
 import Button from 'react-bootstrap/Button';
-import swapStatusServices from './Services/swapStatus.services';
+import swapServices from '../../Services/swap.services';
 import './SwapStatus.scss';
 const SwapStatus = () => {
   const [requestsList, setRequestsList] = useState(null);
@@ -23,7 +23,7 @@ const SwapStatus = () => {
   const HandleAcceptSwapRequest = (valueId, matchedId) => {
     setLoading(true);
     setMessage('');
-    swapStatusServices.acceptSwapRequest(valueId, matchedId).then(
+    swapServices.acceptSwapRequest(valueId, matchedId).then(
       (res) => {
         setLoading(false);
         setMessage('Successful');
@@ -44,7 +44,7 @@ const SwapStatus = () => {
   const HandleDeclineSwapRequest = (valueId, matchedId) => {
     setLoading(true);
     setMessage('');
-    swapStatusServices.declineSwapRequest(valueId, matchedId).then(
+    swapServices.declineSwapRequest(valueId, matchedId).then(
       (res) => {
         setLoading(false);
         setMessage('Successful');
@@ -81,14 +81,14 @@ const SwapStatus = () => {
                   </tbody>
                 </Table>
                 {value.matches && value.matches.length ? (
-                  <>
+                  <div className="table-responsive">
                     <Table striped bordered hover variant="dark">
                       <thead>
                         <tr>
                           <th>#</th>
                           <th>Name</th>
                           <th>Email</th>
-                          <th>Matched Time</th>
+                          <th>Time they are offering</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -98,7 +98,7 @@ const SwapStatus = () => {
                             <td>{matchKey + 1}</td>
                             <td>{match.matchedUser.name}</td>
                             <td>{match.matchedUser.email}</td>
-                            <td>d</td>
+                            <td>{globalFunctions.timeToString(match.matchedTimeslots.offered)}</td>
 
                             <td>
                               <Button
@@ -129,7 +129,7 @@ const SwapStatus = () => {
                         </div>
                       </div>
                     )}
-                  </>
+                  </div>
                 ) : (
                   <></>
                 )}
