@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 import exploreSwapRequestsServices from './Services/exploreSwapRequests.service';
 import Loader from '../Loader/Loader';
 import globalFunctions from '../../Global/functions';
+import {BsXLg} from 'react-icons/bs'
 import './ExploreSwapRequests.scss';
 const ExploreSwapRequests = () => {
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,7 @@ const ExploreSwapRequests = () => {
         <InputGroup size="sm" className="mt-3">
           <InputGroup.Text>Course</InputGroup.Text>
           <Form.Control value={subjectWordEntered} onChange={handleQuery} className="formControl" />
+          <BsXLg className="removeWordIcon" onClick={() => setSubjectWordEntered('')}/>
         </InputGroup>
         {filteredData.length !== 0 && (
           <div className="queryResult">
