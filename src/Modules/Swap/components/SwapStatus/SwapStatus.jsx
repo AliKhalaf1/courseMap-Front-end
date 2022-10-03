@@ -107,14 +107,14 @@ const SwapStatus = (props) => {
                                 variant="outline-success"
                                 onClick={() => HandleAcceptSwapRequest(value.id, match.id)}
                               >
-                                Accept
+                                Done
                               </Button>
                               {'  '}
                               <Button
                                 variant="outline-danger"
                                 onClick={() => HandleDeclineSwapRequest(match.id)}
                               >
-                                Decline
+                                Find another match
                               </Button>
                             </td>
                           </tr>
