@@ -4,7 +4,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Home.scss';
- import { BsSearch } from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs';
 // import { RiMindMap } from 'react-icons/ri';
 //import { FaRegListAlt, FaExchangeAlt } from 'react-icons/fa';
 import { FaExchangeAlt } from 'react-icons/fa';
@@ -20,11 +20,17 @@ const Home = () => {
       </Container>
       <Container className="homeContainer">
         <a href="/swap">
-          <Card className="homeCard"><FaExchangeAlt className='icon'/>Submit a Request</Card>
+          <Card className="homeCard">
+            <FaExchangeAlt className="icon" />
+            Submit a Request
+          </Card>
         </a>
         <a href="/explore-request">
-          <Card className="homeCard"><BsSearch className='icon'/>Explore other Requests </Card>
-          </a>
+          <Card className="homeCard">
+            <BsSearch className="icon" />
+            Explore other Requests{' '}
+          </Card>
+        </a>
       </Container>
       <Footer />
     </section>

@@ -89,7 +89,15 @@ const AddSwapRequest = (props) => {
           props.setLoading(false);
           props.setNumberOfAddedRequests(props.numberOfAddedRequests + 1);
           setSuccessful(true);
-          setMessage('Successful');
+          if (response.status === 'pending') {
+            setMessage(
+              'No match has been found for you request yet. Once a match has been found we will send you an email or you can track your requests below.'
+            );
+          } else {
+            setMessage(
+              'You are luckt! We have found a match for you! You can see the details down below, once you reach an agreement with your partner please click Done.'
+            );
+          }
         },
         (error) => {
           props.setLoading(false);

@@ -20,7 +20,7 @@ const SwapStatus = (props) => {
       props.setLoading(false);
       setRenderingList(false);
     });
-  }, [props.numberOfAddedRequests]);
+  }, [props.numberOfAddedRequests, successful]);
 
   const HandleAcceptSwapRequest = (valueId, matchedId) => {
     props.setLoading(true);
@@ -69,6 +69,16 @@ const SwapStatus = (props) => {
       <div className="swapStatus mt-4">
         <h2>Swap Status</h2>
         <div className="mt-5">
+          {message && (
+            <div className="form-group">
+              <div
+                className={successful ? 'alert alert-success' : 'alert alert-danger'}
+                role="alert"
+              >
+                {message}
+              </div>
+            </div>
+          )}
           {requestsList && requestsList.length ? (
             requestsList.map((value, key) => (
               <div className="mt-5" key={key}>
@@ -102,35 +112,27 @@ const SwapStatus = (props) => {
                             <td>{match.matchedUser.email}</td>
                             <td>{globalFunctions.timeToString(match.matchedTimeslots.offered)}</td>
 
-                            <td>
-                              <Button
-                                variant="outline-success"
-                                onClick={() => HandleAcceptSwapRequest(value.id, match.id)}
-                              >
-                                Done
-                              </Button>
-                              {'  '}
-                              <Button
-                                variant="outline-danger"
-                                onClick={() => HandleDeclineSwapRequest(match.id)}
-                              >
-                                Find another match
-                              </Button>
-                            </td>
+                            {match.status === 'agreed' || (
+                              <td>
+                                <Button
+                                  variant="outline-success"
+                                  onClick={() => HandleAcceptSwapRequest(value.id, match.id)}
+                                >
+                                  Done
+                                </Button>
+                                {'  '}
+                                <Button
+                                  variant="outline-danger"
+                                  onClick={() => HandleDeclineSwapRequest(match.id)}
+                                >
+                                  Find another match
+                                </Button>
+                              </td>
+                            )}
                           </tr>
                         ))}
                       </tbody>
                     </Table>
-                    {message && (
-                      <div className="form-group">
-                        <div
-                          className={successful ? 'alert alert-success' : 'alert alert-danger'}
-                          role="alert"
-                        >
-                          {message}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 ) : (
                   <></>
