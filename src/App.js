@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/swap" element={<Swap />} />
-        <Route path="/user" element={<User />} />
+        {/* <Route path="/user" element={<User />} /> */}
         <Route path="/explore-request" element={<ExploreSwapRequests />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/forget-password" element={<ForgetPassword />} />

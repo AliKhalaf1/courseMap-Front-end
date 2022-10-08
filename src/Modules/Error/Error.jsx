@@ -8,7 +8,7 @@ const Error = () => {
       <Snowfall snowflakeCount={300} className="snow" />
 
       <h1 classname="l">404</h1>
-      <h3>Seems like you are lost.</h3>
+      <h3>Seems like you're lost.</h3>
       <h5> or did your parents abandon you here?</h5>
       <h6>Oh... </h6>
 

@@ -39,6 +39,7 @@ const ExploreSwapRequests = () => {
 
   return (
     <Container id="explore">
+    {loading && <Loader />}
       <div className="input_group">
         <h4>Select a subject :D</h4>
         <InputGroup size="sm" className="mt-3">
@@ -56,9 +57,7 @@ const ExploreSwapRequests = () => {
           </div>
         )}
       </div>
-      {loading ? (
-        <Loader />
-      ) : (
+      
         <div>
           {subjectPicked ? (
             <div>
@@ -104,7 +103,6 @@ const ExploreSwapRequests = () => {
             <></>
           )}
         </div>
-      )}
     </Container>
   );
 };

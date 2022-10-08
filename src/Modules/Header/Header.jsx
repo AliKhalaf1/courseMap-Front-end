@@ -29,7 +29,7 @@ const Header = () => {
             <Nav>
               {loggedIn ? (
                 <>
-                  <Nav.Link href="/user">Profile</Nav.Link>
+                  {/* <Nav.Link href="/user">Profile</Nav.Link> */}
                   <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </>
               ) : (

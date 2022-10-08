@@ -1,4 +1,5 @@
 const dateToString = (date) => {
+  const mins =date.minute.low < 10? "0"+date.minute.low:date.minute.low
   return (
     date.day.low +
     '/' +
@@ -7,8 +8,8 @@ const dateToString = (date) => {
     date.year.low +
     '  ' +
     date.hour.low +
-    ':' +
-    date.minute.low
+    ':' + mins
+    
   );
 };
 

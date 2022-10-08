@@ -21,7 +21,13 @@ const SwapStatus = (props) => {
       setRenderingList(false);
     });
   }, [props.numberOfAddedRequests, successful]);
-
+  const HandleDeleteRequest = (reqId) => {
+    userSwapRequestsServices.deleteRequest(reqId).then((res) => {
+      if (res.status === 200) {
+        setRequestsList(requestsList.filter((req) => req.id !== reqId));
+      }
+    });
+  };
   const HandleAcceptSwapRequest = (valueId, matchedId) => {
     props.setLoading(true);
     setMessage('');
@@ -89,6 +95,18 @@ const SwapStatus = (props) => {
                       <td>{value.course.code + ' - ' + value.course.name}</td>
                       <td>{globalFunctions.dateToString(value.createdAt)}</td>
                       <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
+                      <td>
+                    {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
+                      <p key={wantedTimeslotsKey}>{globalFunctions.timeToString(time)}</p>
+                    ))}
+                  </td>
+                      <td><Button
+                      variant="outline-danger"
+                      size="sm"
+                      onClick={() => HandleDeleteRequest(value.id)}
+                    >
+                      Delete
+                    </Button></td>
                     </tr>
                   </tbody>
                 </Table>

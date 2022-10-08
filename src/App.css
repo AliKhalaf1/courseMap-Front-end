@@ -17,7 +17,6 @@ a {
 }
 body {
   background-color: var(--color-dark-hover);
-  transition: var(--transition);
 }
 .loader {
   background-color: red;
