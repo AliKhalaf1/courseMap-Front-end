@@ -1,5 +1,5 @@
 const configs = {
-  API_BASE_URL: 'http://swap-courses-api.herokuapp.com/api',
+  API_BASE_URL: 'https://credithub.onrender.com/api',
   CURRENT_SEMESTER: 'F22'
 };
 
