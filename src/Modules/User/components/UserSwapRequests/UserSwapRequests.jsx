@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import userSwapRequestsServices from '../../services/userSwapRequests.services';
 import Table from 'react-bootstrap/Table';
-import Loader from '../../../Loader/Loader';
+import Loader from '../../../Components/Loader/Loader';
 import globalFunctions from '../../../../Global/functions';
 import Button from 'react-bootstrap/Button';
 const UserSwapRequests = () => {
@@ -56,8 +56,7 @@ const UserSwapRequests = () => {
                     <Button
                       variant="outline-danger"
                       size="sm"
-                      onClick={() => HandleDeleteRequest(value.id)}
-                    >
+                      onClick={() => HandleDeleteRequest(value.id)}>
                       Delete
                     </Button>
                   </td>

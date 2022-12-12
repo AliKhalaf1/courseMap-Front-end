@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import AddSwapRequest from './components/AddSwapRequest/AddSwapRequest';
 import SwapStatus from './components/SwapStatus/SwapStatus';
-import Loader from '../Loader/Loader';
+import Loader from '../Components/Loader/Loader';
+
 const Swap = () => {
   const [loading, setLoading] = useState(false);
   const [numberOfAddedRequests, setNumberOfAddedRequests] = useState(0);

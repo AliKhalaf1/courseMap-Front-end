@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import userSwapRequestsServices from '../../../User/services/userSwapRequests.services';
 import Table from 'react-bootstrap/Table';
 import globalFunctions from '../../../../Global/functions';
-import Loader from '../../../Loader/Loader';
+import Loader from '../../../Components/Loader/Loader';
 import Button from 'react-bootstrap/Button';
 import swapServices from '../../Services/swap.services';
 import './SwapStatus.scss';
@@ -79,8 +79,7 @@ const SwapStatus = (props) => {
             <div className="form-group">
               <div
                 className={successful ? 'alert alert-success' : 'alert alert-danger'}
-                role="alert"
-              >
+                role="alert">
                 {message}
               </div>
             </div>
@@ -96,17 +95,18 @@ const SwapStatus = (props) => {
                       <td>{globalFunctions.dateToString(value.createdAt)}</td>
                       <td>{globalFunctions.timeToString(value.offeredTimeslot)}</td>
                       <td>
-                    {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
-                      <p key={wantedTimeslotsKey}>{globalFunctions.timeToString(time)}</p>
-                    ))}
-                  </td>
-                      <td><Button
-                      variant="outline-danger"
-                      size="sm"
-                      onClick={() => HandleDeleteRequest(value.id)}
-                    >
-                      Delete
-                    </Button></td>
+                        {value.wantedTimeslots.map((time, wantedTimeslotsKey) => (
+                          <p key={wantedTimeslotsKey}>{globalFunctions.timeToString(time)}</p>
+                        ))}
+                      </td>
+                      <td>
+                        <Button
+                          variant="outline-danger"
+                          size="sm"
+                          onClick={() => HandleDeleteRequest(value.id)}>
+                          Delete
+                        </Button>
+                      </td>
                     </tr>
                   </tbody>
                 </Table>
@@ -134,15 +134,13 @@ const SwapStatus = (props) => {
                               <td>
                                 <Button
                                   variant="outline-success"
-                                  onClick={() => HandleAcceptSwapRequest(value.id, match.id)}
-                                >
+                                  onClick={() => HandleAcceptSwapRequest(value.id, match.id)}>
                                   Done
                                 </Button>
                                 {'  '}
                                 <Button
                                   variant="outline-danger"
-                                  onClick={() => HandleDeclineSwapRequest(match.id)}
-                                >
+                                  onClick={() => HandleDeclineSwapRequest(match.id)}>
                                   Find another match
                                 </Button>
                               </td>
