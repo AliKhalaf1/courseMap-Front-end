@@ -6,6 +6,7 @@ import globalFunctions from '../../../../Global/functions';
 import Loader from '../../../Components/Loader/Loader';
 import Button from 'react-bootstrap/Button';
 import swapServices from '../../Services/swap.services';
+import configs from '../../../../Global/config';
 import './SwapStatus.scss';
 const SwapStatus = (props) => {
   const [requestsList, setRequestsList] = useState(null);
@@ -16,7 +17,10 @@ const SwapStatus = (props) => {
     props.setLoading(true);
     setRenderingList(true);
     userSwapRequestsServices.getUserRequests().then((res) => {
+      //filter res to get only the requests that have matches
+      res = res.filter((req) => req.semester === configs.CURRENT_SEMESTER);
       setRequestsList(res);
+      console.log(res);
       props.setLoading(false);
       setRenderingList(false);
     });
